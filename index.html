@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>youtube Auto Replay</title>
+  <style>
+    .youtube {
+      display: block;
+    }
+
+    .play-space {
+      position: absolute;
+      top: 10px
+    }
+
+    iframe {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='youtube'>
+    <div class = "play-space">
+      <input type="text" class = "youtube-url">
+      <button>click</button>
+    </div>
+    <iframe width="560" height="315" src='' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <script>
+    const $button = document.querySelector('button');
+    const $youtubeUrl = document.body.querySelector('.youtube-url');
+    const $iframe = document.querySelector('iframe');
+    $button.addEventListener('click', function (e) {
+      const targetUrl = $youtubeUrl.value;
+      const src = `https://www.youtube.com/embed/${targetUrl}?playlist=${targetUrl}&loop=1&autoplay=1`;
+      $iframe.src = src;
+    })
+  </script>
+</body>
+
+</html>
